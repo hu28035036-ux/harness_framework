@@ -1,0 +1,52 @@
+{
+  "step": 2,
+  "name": "verification-editor",
+  "status": "completed",
+  "recorded_at": "2026-05-23T08:21:23+09:00",
+  "completed_at": "2026-05-23T08:21:23+09:00",
+  "implemented": [
+    "Added verification editor models for autofilled session fields, worker/customer/server/timing data, and capture/clip assets.",
+    "Added direct-input fields for title, work summary, price basis, worker memo, and additional clip references.",
+    "Added preview line generation for final verification post review.",
+    "Added publish validation that blocks missing required fields, missing customer nickname, missing assets, and failed uploads.",
+    "Added desktop tests for publishable drafts, required-field gaps, failed uploads, and missing customer nickname."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "desktop_verification": {
+    "unit_tests": {
+      "command": "python -m unittest discover -s desktop/tests",
+      "tests": 12,
+      "status": "passed"
+    },
+    "demo_entrypoint": {
+      "command": "python -m desktop.zzallog.main",
+      "output": "ZzalLog desktop ready. login_enabled=True",
+      "status": "passed"
+    }
+  },
+  "mistakes_recorded": [],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "34f4b62",
+    "pushed_at": "2026-05-23T08:21:23+09:00"
+  }
+}

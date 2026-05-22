@@ -29,6 +29,7 @@ def main() -> int:
     layout.addWidget(QLabel(state.blocking_reason or "업데이트 확인 완료. 로그인할 수 있습니다."))
     sample_draft = WorkSessionDraft(customer_nickname="손님A", server_name="루나", expected_minutes=180, price_basis="협의")
     layout.addWidget(QLabel(f"작업 시작 준비: {sample_draft.server_name} / 장시간 모드 권장={sample_draft.long_session_recommended}"))
+    layout.addWidget(QLabel("인증 게시글 편집: 필수 자료와 업로드 상태 확인 후 게시"))
     login_button = QPushButton("로그인")
     login_button.setEnabled(state.login_enabled)
     layout.addWidget(login_button)
