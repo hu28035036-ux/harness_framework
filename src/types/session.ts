@@ -38,3 +38,27 @@ export const assetStatuses = [
 
 export type AssetStatus =
   (typeof assetStatuses)[number];
+
+export const workerApprovalStatuses = [
+  "pending",
+  "approved",
+  "rejected",
+  "suspended",
+] as const;
+
+export type WorkerApprovalStatus =
+  (typeof workerApprovalStatuses)[number];
+
+export const wantedPostStatuses = ["open", "closed", "hidden", "deleted"] as const;
+
+export type WantedPostStatus = (typeof wantedPostStatuses)[number];
+
+export const reportStatuses = [
+  "received",
+  "reviewing",
+  "listed",
+  "rejected",
+  "closed",
+] as const;
+
+export type ReportStatus = (typeof reportStatuses)[number];

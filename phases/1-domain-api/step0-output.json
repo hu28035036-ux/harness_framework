@@ -1,0 +1,48 @@
+{
+  "step": 0,
+  "name": "domain-models",
+  "recorded_at": "2026-05-23T00:20:00+0900",
+  "implemented": [
+    "PostgreSQL 기준 Prisma schema와 14개 핵심 테이블 모델을 추가했다.",
+    "세션/게시글/파일/기사/기사구함/제보 상태 enum을 Prisma schema와 TypeScript 상수/타입으로 공유했다.",
+    "공개 기사 프로필 DTO와 `toPublicWorkerProfile` 매핑 함수를 추가해 이메일, 전화번호, 실명을 제외했다.",
+    "Prisma enum과 TypeScript 상태값 동기화 테스트, 공개 DTO 개인정보 비노출 테스트를 추가했다."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "ok": true,
+    "runs": [
+      {
+        "run": 1,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 2,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 3,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 4,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 5,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      }
+    ],
+    "completed_at": "2026-05-23T00:23:05+0900"
+  },
+  "extra_validation": {
+    "command": "$env:DATABASE_URL='postgresql://zzallog:zzallog@localhost:5432/zzallog?schema=public'; npx.cmd prisma validate",
+    "ok": true
+  }
+}

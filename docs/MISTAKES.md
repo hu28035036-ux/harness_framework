@@ -40,3 +40,17 @@
   원인: Next가 관리하는 생성 호환 파일을 ESLint 대상에 포함함.
   수정: `eslint.config.mjs`에서 `next-env.d.ts`를 ignore 처리함.
   재발 방지: 프레임워크가 자동 관리하는 타입 참조 파일은 lint 대상에서 제외한다.
+
+- 날짜: 2026-05-23T00:19:00+0900
+  step: 1-domain-api/step0
+  증상: `npx prisma validate`가 datasource `url` 속성을 거부함.
+  원인: 최초 설치된 Prisma 7은 datasource URL 설정 방식이 변경되어 기존 schema 문법과 맞지 않음.
+  수정: MVP 안정성을 위해 Prisma CLI와 client를 6.19.0으로 고정함.
+  재발 방지: ORM 메이저 버전 업그레이드는 별도 ADR과 schema 마이그레이션 계획이 있을 때만 진행한다.
+
+- 날짜: 2026-05-23T00:19:00+0900
+  step: 1-domain-api/step0
+  증상: Prisma schema에 enum이 있는데 테스트가 `Missing Prisma enum`으로 실패함.
+  원인: 동적 정규식 문자열에서 중괄호와 공백 패턴을 과하게 이스케이프함.
+  수정: `new RegExp` 패턴을 `enum Name \\{([\\s\\S]*?)\\}` 형태로 수정함.
+  재발 방지: 문자열 기반 schema 파서는 작은 실패 테스트로 먼저 확인한다.
