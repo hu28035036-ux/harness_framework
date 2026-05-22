@@ -87,3 +87,34 @@ export const wantedPosts = [
     comments: [{ workerName: "주말기사", body: "가능 시간대 확인 후 댓글을 남겼습니다." }],
   },
 ] as const;
+
+export const scammerReports = [
+  {
+    id: "scammer-001",
+    workerName: "검증대기기사",
+    characterName: "루나-가림캐릭",
+    reportType: "작업 미완료",
+    status: "검토중",
+  },
+  {
+    id: "scammer-002",
+    workerName: "주의필요기사",
+    characterName: "스카니아-흐림캐릭",
+    reportType: "인증 자료 불일치",
+    status: "공개됨",
+  },
+] as const;
+
+export const feedbackItems = [
+  { id: "feedback-101", title: "모바일 하단 메뉴 간격 제안", type: "건의", status: "검토중" },
+  { id: "feedback-102", title: "업로드 대기 표시 오류", type: "오류", status: "접수" },
+] as const;
+
+export const settingsSummary = [
+  { label: "닉네임", value: "손님계정" },
+  { label: "이메일", value: "비공개" },
+  { label: "비밀번호", value: "변경 가능" },
+  { label: "테마", value: "시스템" },
+  { label: "기사 전환 신청", value: "미신청" },
+  { label: "이메일 본인인증", value: "완료" },
+] as const;

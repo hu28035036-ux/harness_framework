@@ -19,7 +19,9 @@
     {
       "step": 2,
       "name": "trust-settings-pages",
-      "status": "pending"
+      "status": "completed",
+      "completed_at": "2026-05-23T08:07:06+09:00",
+      "summary": "Trust, feedback, and settings surfaces with privacy-safe scammer list, report forms, account controls, Browser checks, and 5x AC verification."
     }
   ]
 }

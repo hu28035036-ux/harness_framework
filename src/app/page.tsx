@@ -1,6 +1,15 @@
 import { AppShell } from "@/components/app-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { foundationStats, promoPosts, wantedPosts, workerCards, workerFilters } from "@/domain/foundation-data";
+import {
+  feedbackItems,
+  foundationStats,
+  promoPosts,
+  scammerReports,
+  settingsSummary,
+  wantedPosts,
+  workerCards,
+  workerFilters,
+} from "@/domain/foundation-data";
 
 export default function Home() {
   const featuredWorker = workerCards[0];
@@ -228,24 +237,105 @@ export default function Home() {
             </p>
           </section>
 
-          <section id="settings" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
-            <h2 className="font-semibold">PC 프로그램 메뉴</h2>
-            <ul className="mt-3 space-y-2 text-sm opacity-80">
-              <li>대시보드, 업로드 대기 상태</li>
-              <li>작업 시작, 녹화 미리보기, 3초 테스트</li>
-              <li>인증 캡처, 수동 저장, 보류/이어하기</li>
-              <li>인증 게시글 작성과 손님 확인 링크</li>
-            </ul>
-          </section>
           <section id="scammer" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
-            <h2 className="font-semibold">주의 정보</h2>
-            <p className="mt-3 text-sm leading-6 opacity-80">
-              사기꾼 목록은 개인정보 없이 기사명, 캐릭터명, 유형, 상태만 공개합니다.
-            </p>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h2 className="font-semibold">사기꾼 정보</h2>
+                <p className="mt-1 text-sm opacity-75">기사명, 캐릭터명, 유형, 상태만 공개</p>
+              </div>
+              <StatusBadge tone="warning">개인정보 비공개</StatusBadge>
+            </div>
+            <div className="mt-4 overflow-hidden rounded-md border border-[var(--border)]">
+              <table className="w-full border-collapse text-left text-sm">
+                <thead className="bg-[var(--surface-muted)]">
+                  <tr>
+                    <th className="px-3 py-2 font-semibold">기사명</th>
+                    <th className="px-3 py-2 font-semibold">캐릭터명</th>
+                    <th className="px-3 py-2 font-semibold">유형</th>
+                    <th className="px-3 py-2 font-semibold">상태</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scammerReports.map((report) => (
+                    <tr className="border-t border-[var(--border)]" key={report.id}>
+                      <td className="px-3 py-2">{report.workerName}</td>
+                      <td className="px-3 py-2">{report.characterName}</td>
+                      <td className="px-3 py-2">{report.reportType}</td>
+                      <td className="px-3 py-2">{report.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <form aria-label="사기꾼 제보 폼" className="mt-4 grid gap-3">
+              <label className="grid gap-1 text-sm">
+                기사명
+                <input className="rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2" placeholder="공개 가능한 기사명" />
+              </label>
+              <label className="grid gap-1 text-sm">
+                유형
+                <select className="rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2" defaultValue="작업 미완료">
+                  <option>작업 미완료</option>
+                  <option>인증 자료 불일치</option>
+                  <option>계정 공유 규칙 위반</option>
+                </select>
+              </label>
+              <button className="rounded-md border border-[var(--border)] px-4 py-2 font-semibold" type="submit">
+                제보 접수
+              </button>
+            </form>
           </section>
           <section id="feedback" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
             <h2 className="font-semibold">오류 및 건의사항</h2>
-            <p className="mt-3 text-sm leading-6 opacity-80">오류 제보와 기능 건의 처리 상태를 확인하는 영역입니다.</p>
+            <form aria-label="오류 및 건의사항 작성 폼" className="mt-3 grid gap-3">
+              <label className="grid gap-1 text-sm">
+                분류
+                <select className="rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2" defaultValue="건의">
+                  <option>건의</option>
+                  <option>오류</option>
+                </select>
+              </label>
+              <label className="grid gap-1 text-sm">
+                내용
+                <textarea
+                  className="min-h-20 rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2"
+                  placeholder="재현 단계나 제안을 입력"
+                />
+              </label>
+              <button className="rounded-md border border-[var(--border)] px-4 py-2 font-semibold" type="submit">
+                등록
+              </button>
+            </form>
+            <div className="mt-4 grid gap-2">
+              {feedbackItems.map((item) => (
+                <article className="rounded-md bg-[var(--surface-muted)] px-3 py-2" key={item.id}>
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                    <StatusBadge tone={item.type === "오류" ? "danger" : "neutral"}>{item.status}</StatusBadge>
+                  </div>
+                  <p className="mt-1 text-xs opacity-75">{item.type}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+          <section id="settings" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+            <h2 className="font-semibold">설정</h2>
+            <dl className="mt-3 grid gap-2 text-sm">
+              {settingsSummary.map((item) => (
+                <div className="flex items-center justify-between rounded-md bg-[var(--surface-muted)] px-3 py-2" key={item.label}>
+                  <dt className="opacity-75">{item.label}</dt>
+                  <dd className="font-semibold">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              <button className="rounded-md border border-[var(--border)] px-3 py-2 text-sm font-semibold" type="button">
+                비밀번호 변경
+              </button>
+              <button className="rounded-md border border-[var(--border)] px-3 py-2 text-sm font-semibold" type="button">
+                기사 전환 신청
+              </button>
+            </div>
           </section>
         </aside>
       </div>

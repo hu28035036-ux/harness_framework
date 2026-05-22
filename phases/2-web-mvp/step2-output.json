@@ -1,0 +1,59 @@
+{
+  "step": 2,
+  "name": "trust-settings-pages",
+  "status": "completed",
+  "recorded_at": "2026-05-23T08:07:06+09:00",
+  "completed_at": "2026-05-23T08:07:06+09:00",
+  "implemented": [
+    "Added privacy-safe scammer report data and a public table limited to worker name, character name, report type, and status.",
+    "Added a scammer report submission form that asks only for public-safe report fields.",
+    "Added feedback and issue submission UI with status cards for reported items.",
+    "Added settings UI covering nickname, email privacy, password change, theme, worker conversion request, and email verification status.",
+    "Added unit coverage to ensure public trust surfaces do not expose real name, phone number, IP, or bank-account labels."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "browser_verification": {
+    "url": "http://127.0.0.1:3001",
+    "title": "쩔로그",
+    "hasScammerHeading": true,
+    "scammerHeaders": ["기사명", "캐릭터명", "유형", "상태"],
+    "hasScammerReportForm": true,
+    "hasFeedbackForm": true,
+    "settingsHasRequiredItems": true,
+    "sensitivePublicLabels": {
+      "realName": false,
+      "phone": false,
+      "ip": false,
+      "bankAccount": false
+    },
+    "consoleErrorCount": 0,
+    "status": "passed"
+  },
+  "mistakes_recorded": [
+    "Restart localhost verification server after large App Router page rewrites if Browser verification sees stale webpack runtime errors."
+  ],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "9a95670",
+    "pushed_at": "2026-05-23T08:07:06+09:00"
+  }
+}

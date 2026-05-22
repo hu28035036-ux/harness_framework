@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { navigationTabs, promoPosts, wantedPosts, workerCards, workerFilters } from "@/domain/foundation-data";
+import {
+  navigationTabs,
+  promoPosts,
+  scammerReports,
+  settingsSummary,
+  wantedPosts,
+  workerCards,
+  workerFilters,
+} from "@/domain/foundation-data";
 import {
   assetStatuses,
   verificationPostStatuses,
@@ -31,6 +39,25 @@ describe("foundation shell", () => {
     const serialized = JSON.stringify({ workerCards, promoPosts, wantedPosts });
     expect(serialized).not.toContain("카카오톡");
     expect(serialized).not.toContain("디스코드");
+  });
+
+  it("keeps trust lists limited to public fields and settings privacy-safe", () => {
+    expect(scammerReports).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          workerName: expect.any(String),
+          characterName: expect.any(String),
+          reportType: expect.any(String),
+          status: expect.any(String),
+        }),
+      ]),
+    );
+    expect(settingsSummary.find((item) => item.label === "이메일")?.value).toBe("비공개");
+
+    const serialized = JSON.stringify({ scammerReports, settingsSummary });
+    expect(serialized).not.toContain("전화번호");
+    expect(serialized).not.toContain("IP");
+    expect(serialized).not.toContain("계좌번호");
   });
 
   it("exposes the design-spec status unions", () => {

@@ -75,3 +75,10 @@
   cause: The persistent browser JavaScript kernel kept previous top-level declarations from an earlier check.
   fix: Reset the browser JavaScript kernel before rerunning the responsive breakpoint script.
   prevention: In browser verification scripts, use fresh variable names or `var` for reusable bindings, and reset the kernel before a new multi-step responsive check.
+
+- date: 2026-05-23T08:07:06+09:00
+  step: 2-web-mvp/step2
+  symptom: Browser verification initially showed missing sections and stale dev-server runtime errors even though lint, typecheck, tests, and build passed.
+  cause: A long-running Next.js dev server kept stale HMR/runtime state after repeated page rewrites.
+  fix: Restarted the localhost verification server and reset the browser JavaScript kernel before rerunning Browser checks.
+  prevention: After large App Router page rewrites, restart the dev server before Browser MCP verification if the page title falls back to the host or console shows webpack runtime errors.
