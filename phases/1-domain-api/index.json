@@ -7,7 +7,7 @@
       "name": "domain-models",
       "status": "completed",
       "completed_at": "2026-05-23T00:23:05+0900",
-      "summary": "Prisma schema 핵심 모델, 상태 enum/TypeScript 타입 동기화, 공개 기사 프로필 DTO 개인정보 비노출 매핑과 테스트를 추가하고 AC 5회 검증을 통과했다."
+      "summary": "Supabase SQL migration 핵심 모델, 상태 enum/TypeScript 타입 동기화, 공개 기사 프로필 DTO 개인정보 비노출 매핑과 테스트를 기준으로 변경했다."
     },
     {
       "step": 1,

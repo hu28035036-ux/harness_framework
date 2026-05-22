@@ -6,7 +6,7 @@
 - `phases/3-desktop-mvp/step2-output.json`
 
 ## 작업
-- `RecorderBackend` 인터페이스와 `FFmpegRecorder` 구현체를 만든다.
+- Python `RecordingBackend` 인터페이스와 `FFmpegRecordingBackend` 구현체를 만든다.
 - 3초 테스트 녹화와 30초 클립 녹화 경로를 분리한다.
 - 녹화 대상은 게임 창 우선, 실패 시 직접 영역 지정으로 전환할 수 있게 타입을 둔다.
 

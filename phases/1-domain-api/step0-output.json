@@ -3,10 +3,10 @@
   "name": "domain-models",
   "recorded_at": "2026-05-23T00:20:00+0900",
   "implemented": [
-    "PostgreSQL 기준 Prisma schema와 14개 핵심 테이블 모델을 추가했다.",
-    "세션/게시글/파일/기사/기사구함/제보 상태 enum을 Prisma schema와 TypeScript 상수/타입으로 공유했다.",
+    "Supabase Pro 기준 SQL migration과 14개 핵심 테이블 모델을 기준으로 한다.",
+    "세션/게시글/파일/기사/기사구함/제보 상태 enum을 Supabase migration과 TypeScript 상수/타입으로 공유한다.",
     "공개 기사 프로필 DTO와 `toPublicWorkerProfile` 매핑 함수를 추가해 이메일, 전화번호, 실명을 제외했다.",
-    "Prisma enum과 TypeScript 상태값 동기화 테스트, 공개 DTO 개인정보 비노출 테스트를 추가했다."
+    "Supabase enum과 TypeScript 상태값 동기화 테스트, 공개 DTO 개인정보 비노출 테스트를 추가했다."
   ],
   "verification_started": true,
   "validation": {
@@ -42,7 +42,8 @@
     "completed_at": "2026-05-23T00:23:05+0900"
   },
   "extra_validation": {
-    "command": "$env:DATABASE_URL='postgresql://zzallog:zzallog@localhost:5432/zzallog?schema=public'; npx.cmd prisma validate",
-    "ok": true
+    "command": "Supabase SQL migration parsed by src/test/domain-models.test.ts",
+    "ok": true,
+    "note": "Prisma validation was superseded by Supabase migration tests after the stack change."
   }
 }

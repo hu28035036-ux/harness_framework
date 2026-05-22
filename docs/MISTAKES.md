@@ -46,14 +46,14 @@
   증상: `npx prisma validate`가 datasource `url` 속성을 거부함.
   원인: 최초 설치된 Prisma 7은 datasource URL 설정 방식이 변경되어 기존 schema 문법과 맞지 않음.
   수정: MVP 안정성을 위해 Prisma CLI와 client를 6.19.0으로 고정함.
-  재발 방지: ORM 메이저 버전 업그레이드는 별도 ADR과 schema 마이그레이션 계획이 있을 때만 진행한다.
+  재발 방지: 이후 계획 변경으로 DB 기준을 Supabase SQL migration으로 바꾸었으므로 Prisma를 다시 도입하지 않는다.
 
 - 날짜: 2026-05-23T00:19:00+0900
   step: 1-domain-api/step0
   증상: Prisma schema에 enum이 있는데 테스트가 `Missing Prisma enum`으로 실패함.
   원인: 동적 정규식 문자열에서 중괄호와 공백 패턴을 과하게 이스케이프함.
   수정: `new RegExp` 패턴을 `enum Name \\{([\\s\\S]*?)\\}` 형태로 수정함.
-  재발 방지: 문자열 기반 schema 파서는 작은 실패 테스트로 먼저 확인한다.
+  재발 방지: Supabase SQL migration 파서도 작은 실패 테스트로 먼저 확인한다.
 
 - 날짜: 2026-05-23T00:32:00+0900
   step: 1-domain-api/step2

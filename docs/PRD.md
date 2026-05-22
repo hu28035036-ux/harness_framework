@@ -31,3 +31,11 @@
 - 장시간 모드에서 보류/이어하기/재개 클립이 정상 동작한다.
 - 강제 업데이트 중 작업 자료가 수동저장/복구 가능하다.
 - 사기꾼 제보/목록 기능이 개인정보 비공개 원칙으로 동작한다.
+
+## 확정 기술 기준
+- 웹페이지: Next.js.
+- 배포: Vercel Pro.
+- DB/Auth/Storage: Supabase Pro.
+- PC 프로그램: Python + PySide6 + FFmpeg.
+- 파일 저장: 1차는 Supabase Storage.
+- 영상 증가 시 Cloudflare R2로 분리 가능하게 저장소 계약을 유지한다.

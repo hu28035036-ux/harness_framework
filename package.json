@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "typecheck": "next typegen && tsc --noEmit",
+    "typecheck": "node -e \"require('fs').rmSync('tsconfig.tsbuildinfo',{force:true})\" && next typegen && tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
-    "@prisma/client": "^6.19.0",
+    "@supabase/supabase-js": "^2.106.1",
     "next": "^15.5.18",
     "react": "19.1.0",
     "react-dom": "19.1.0"
@@ -26,7 +26,6 @@
     "eslint": "^9.38.0",
     "eslint-config-next": "^15.5.18",
     "jsdom": "^27.0.1",
-    "prisma": "^6.19.0",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"

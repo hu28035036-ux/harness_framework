@@ -10,7 +10,8 @@
 
 ## 작업
 - Next.js 15 + TypeScript strict + Tailwind CSS 프로젝트를 현재 저장소에 초기화한다.
-- Electron을 추후 붙일 수 있도록 웹 소스는 `src/` 아래에 두고, `src/desktop`, `src/recorder`, `src/storage`, `src/domain`, `src/server`, `src/types` 디렉터리를 생성한다.
+- Vercel Pro 배포와 Supabase Pro 연동을 전제로 웹 소스는 `src/` 아래에 둔다.
+- Python + PySide6 PC 프로그램을 추후 붙일 수 있도록 `desktop/zzallog`, `desktop/tests`, `src/storage`, `src/domain`, `src/server`, `src/types` 디렉터리를 생성한다.
 - `package.json`에 `dev`, `build`, `lint`, `typecheck`, `test` 스크립트를 정의한다.
 - 테스트 러너는 빠른 MVP에 맞게 Vitest를 기본으로 사용한다.
 - 홈 화면은 실제 앱 첫 화면으로 만들되, 아직 기능 구현 전이므로 메인 탭과 상태 영역의 뼈대만 둔다.

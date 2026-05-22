@@ -12,27 +12,32 @@ import {
 import type { WorkerProfileRecord } from "@/types/profile";
 import { projectPath } from "./test-utils";
 
-function prismaEnumValues(enumName: string) {
-  const schema = readFileSync(projectPath("prisma/schema.prisma"), "utf-8");
-  const match = schema.match(new RegExp(`enum ${enumName} \\{([\\s\\S]*?)\\}`));
+function supabaseEnumValues(enumName: string) {
+  const schema = readFileSync(projectPath("supabase/migrations/0001_initial_schema.sql"), "utf-8");
+  const match = schema.match(new RegExp(`create type ${enumName} as enum \\((.*?)\\);`, "s"));
   if (!match) {
-    throw new Error(`Missing Prisma enum: ${enumName}`);
+    throw new Error(`Missing Supabase enum: ${enumName}`);
   }
   return match[1]
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line && !line.startsWith("//"))
-    .map((line) => line.split(/\s+/)[0]);
+    .split(",")
+    .map((value) => value.trim().replaceAll("'", ""));
 }
 
 describe("domain models", () => {
-  it("keeps Prisma status enums aligned with shared TypeScript statuses", () => {
-    expect(prismaEnumValues("WorkSessionStatus")).toEqual([...workSessionStatuses]);
-    expect(prismaEnumValues("VerificationPostStatus")).toEqual([...verificationPostStatuses]);
-    expect(prismaEnumValues("AssetStatus")).toEqual([...assetStatuses]);
-    expect(prismaEnumValues("WorkerApprovalStatus")).toEqual([...workerApprovalStatuses]);
-    expect(prismaEnumValues("WantedPostStatus")).toEqual([...wantedPostStatuses]);
-    expect(prismaEnumValues("ReportStatus")).toEqual([...reportStatuses]);
+  it("keeps Supabase status enums aligned with shared TypeScript statuses", () => {
+    expect(supabaseEnumValues("work_session_status")).toEqual([...workSessionStatuses]);
+    expect(supabaseEnumValues("verification_post_status")).toEqual([...verificationPostStatuses]);
+    expect(supabaseEnumValues("asset_status")).toEqual([...assetStatuses]);
+    expect(supabaseEnumValues("worker_approval_status")).toEqual([...workerApprovalStatuses]);
+    expect(supabaseEnumValues("wanted_post_status")).toEqual([...wantedPostStatuses]);
+    expect(supabaseEnumValues("report_status")).toEqual([...reportStatuses]);
+  });
+
+  it("keeps storage asset records portable beyond Supabase Storage", () => {
+    const schema = readFileSync(projectPath("supabase/migrations/0001_initial_schema.sql"), "utf-8");
+    expect(schema).toContain("storage_bucket text not null default 'verification-assets'");
+    expect(schema).toContain("storage_key text not null");
+    expect(schema).toContain("insert into storage.buckets");
   });
 
   it("maps worker profiles without leaking private account fields", () => {

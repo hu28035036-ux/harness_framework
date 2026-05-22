@@ -4,7 +4,7 @@
   "recorded_at": "2026-05-23T00:04:00+0900",
   "implemented": [
     "Next.js 15.5.18, React 19, TypeScript strict, Tailwind CSS 4, ESLint, Vitest 기반 package 구성을 추가했다.",
-    "src/app, src/components, src/domain, src/types와 추후 Electron/녹화/저장소용 src/desktop, src/recorder, src/storage, src/server 디렉터리를 만들었다.",
+    "src/app, src/components, src/domain, src/types와 추후 Supabase/저장소용 src/storage, src/server 및 Python PC 프로그램용 desktop 디렉터리를 기준으로 한다.",
     "쩔로그 실제 앱 셸 첫 화면을 구현했다: 상단 탭, 손님 모드/테마/로그인 컨트롤, 검색, 기사 카드 뼈대, PC 프로그램 상태 영역.",
     "PRD 상단 탭과 설계서 상태값을 검증하는 Vitest 테스트를 추가했다."
   ],
