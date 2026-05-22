@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { navigationTabs } from "@/domain/foundation-data";
+import { navigationTabs, promoPosts, wantedPosts, workerCards, workerFilters } from "@/domain/foundation-data";
 import {
   assetStatuses,
   verificationPostStatuses,
@@ -20,6 +20,17 @@ describe("foundation shell", () => {
       "설정",
     ]);
     expect(navigationTabs.map((tab) => tab.shortLabel)).toEqual(["메인", "기사", "구함", "주의", "건의", "설정"]);
+  });
+
+  it("provides marketplace data without external contact CTAs", () => {
+    expect(workerFilters).toContain("인증 가능");
+    expect(workerCards.every((worker) => worker.historyNote.includes("쩔로그 인증 X"))).toBe(true);
+    expect(promoPosts.every((post) => post.evidence.includes("클립"))).toBe(true);
+    expect(wantedPosts.every((post) => post.visibility.includes("기사"))).toBe(true);
+
+    const serialized = JSON.stringify({ workerCards, promoPosts, wantedPosts });
+    expect(serialized).not.toContain("카카오톡");
+    expect(serialized).not.toContain("디스코드");
   });
 
   it("exposes the design-spec status unions", () => {

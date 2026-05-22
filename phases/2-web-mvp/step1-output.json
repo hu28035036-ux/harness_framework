@@ -1,0 +1,73 @@
+{
+  "step": 1,
+  "name": "marketplace-pages",
+  "status": "completed",
+  "recorded_at": "2026-05-23T07:59:29+09:00",
+  "completed_at": "2026-05-23T07:59:29+09:00",
+  "implemented": [
+    "Expanded the Next.js MVP page with a marketplace dashboard, worker search, worker filters, public worker cards, and marketplace metrics.",
+    "Added public worker profile content with introduction, verification posts, reviews, and prior work marked as '다른 작업물 · 쩔로그 인증 X'.",
+    "Added work promotion post cards that summarize verification evidence without exposing external contact calls to action.",
+    "Added wanted-post list, wanted-post creation form, wanted-post detail preview, worker comments, and a login/worker-only comment policy notice.",
+    "Restored Korean labels in the shell, metadata, controls, and foundation data so tests and browser checks assert the intended UI text."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "browser_verification": {
+    "url": "http://127.0.0.1:3001",
+    "content": {
+      "title": "쩔로그",
+      "workerFilters": 5,
+      "wantedForm": true,
+      "hasWorkerProfile": true,
+      "hasPromoPosts": true,
+      "hasWantedDetail": true,
+      "hasKakao": false,
+      "hasDiscord": false,
+      "consoleErrorCount": 0,
+      "status": "passed"
+    },
+    "responsive": {
+      "desktop": {
+        "width": 1280,
+        "mainNavDisplay": "flex",
+        "mobileNavDisplay": "none",
+        "wantedForm": true
+      },
+      "mobile": {
+        "width": 390,
+        "mainNavDisplay": "none",
+        "mobileNavDisplay": "grid",
+        "links": ["메인", "기사", "구함", "주의", "건의", "설정"]
+      },
+      "consoleErrorCount": 0,
+      "status": "passed"
+    }
+  },
+  "mistakes_recorded": [
+    "Browser verification scripts can collide with persistent top-level declarations; reset the kernel or use reusable variable patterns."
+  ],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "19c28a8",
+    "pushed_at": "2026-05-23T07:59:29+09:00"
+  }
+}

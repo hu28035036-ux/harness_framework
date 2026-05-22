@@ -8,7 +8,7 @@ type UserMode = "customer" | "worker";
 const themeLabels: Record<ThemeMode, string> = {
   system: "시스템",
   dark: "다크",
-  light: "화이트",
+  light: "라이트",
 };
 
 export function ModeThemeControls() {

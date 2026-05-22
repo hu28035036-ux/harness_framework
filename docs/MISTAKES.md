@@ -68,3 +68,10 @@
   원인: 반응형 표시/숨김을 Tailwind 유틸 조합에만 맡겨 실제 브라우저 검증에서 기대 표시 상태를 안정적으로 보장하지 못함.
   수정: `.desktop-main-nav`, `.mobile-bottom-nav` 전용 CSS와 1024px media query를 추가해 데스크톱/모바일 표시 상태를 명시함.
   재발 방지: breakpoint에 따라 반드시 숨겨져야 하는 핵심 내비게이션은 Browser MCP의 실제 computed style로 확인한다.
+
+- date: 2026-05-23T07:59:29+09:00
+  step: 2-web-mvp/step1
+  symptom: Browser verification failed once with `Identifier 'desktop' has already been declared`.
+  cause: The persistent browser JavaScript kernel kept previous top-level declarations from an earlier check.
+  fix: Reset the browser JavaScript kernel before rerunning the responsive breakpoint script.
+  prevention: In browser verification scripts, use fresh variable names or `var` for reusable bindings, and reset the kernel before a new multi-step responsive check.

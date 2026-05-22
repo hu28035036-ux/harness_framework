@@ -12,7 +12,9 @@
     {
       "step": 1,
       "name": "marketplace-pages",
-      "status": "pending"
+      "status": "completed",
+      "completed_at": "2026-05-23T07:59:29+09:00",
+      "summary": "Marketplace dashboard with worker filters, public profile, promo posts, wanted-post form/detail/comments, browser checks, and 5x AC verification."
     },
     {
       "step": 2,
