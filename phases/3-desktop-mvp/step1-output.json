@@ -1,0 +1,52 @@
+{
+  "step": 1,
+  "name": "work-session-ui",
+  "status": "completed",
+  "recorded_at": "2026-05-23T08:16:52+09:00",
+  "completed_at": "2026-05-23T08:16:52+09:00",
+  "implemented": [
+    "Added WorkSessionDraft for customer nickname, server, expected work time, price basis, and memo inputs.",
+    "Added long-session recommendation when expected work time is 180 minutes or longer.",
+    "Added WorkSessionController covering start, recording start, in-progress, capture, manual save, hold/resume/complete/cancel/delete confirmation states.",
+    "Added confirmation warning messages for complete, cancel, and delete so destructive actions cannot execute from a single click.",
+    "Added desktop tests for required field validation, long-session mode recommendation, capture/manual-save behavior, and cancel/delete confirmation requirements."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "desktop_verification": {
+    "unit_tests": {
+      "command": "python -m unittest discover -s desktop/tests",
+      "tests": 8,
+      "status": "passed"
+    },
+    "demo_entrypoint": {
+      "command": "python -m desktop.zzallog.main",
+      "output": "ZzalLog desktop ready. login_enabled=True",
+      "status": "passed"
+    }
+  },
+  "mistakes_recorded": [],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "45f758a",
+    "pushed_at": "2026-05-23T08:16:52+09:00"
+  }
+}

@@ -12,7 +12,9 @@
     {
       "step": 1,
       "name": "work-session-ui",
-      "status": "pending"
+      "status": "completed",
+      "completed_at": "2026-05-23T08:16:52+09:00",
+      "summary": "Work session start/progress model with required input validation, long-session recommendation, capture/manual-save state, confirmation warnings, desktop tests, and 5x AC verification."
     },
     {
       "step": 2,
