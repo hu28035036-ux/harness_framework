@@ -1,0 +1,8 @@
+{
+  "project": "쩔로그",
+  "phase": "0-foundation",
+  "steps": [
+    { "step": 0, "name": "project-bootstrap", "status": "pending" },
+    { "step": 1, "name": "quality-baseline", "status": "pending" }
+  ]
+}

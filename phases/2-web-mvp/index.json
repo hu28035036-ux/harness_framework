@@ -1,0 +1,9 @@
+{
+  "project": "쩔로그",
+  "phase": "2-web-mvp",
+  "steps": [
+    { "step": 0, "name": "navigation-shell", "status": "pending" },
+    { "step": 1, "name": "marketplace-pages", "status": "pending" },
+    { "step": 2, "name": "trust-settings-pages", "status": "pending" }
+  ]
+}

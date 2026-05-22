@@ -1,0 +1,9 @@
+{
+  "project": "쩔로그",
+  "phase": "4-recording-storage",
+  "steps": [
+    { "step": 0, "name": "recorder-backend", "status": "pending" },
+    { "step": 1, "name": "capture-overlay", "status": "pending" },
+    { "step": 2, "name": "upload-queue", "status": "pending" }
+  ]
+}

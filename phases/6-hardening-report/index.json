@@ -1,0 +1,8 @@
+{
+  "project": "쩔로그",
+  "phase": "6-hardening-report",
+  "steps": [
+    { "step": 0, "name": "policy-hardening", "status": "pending" },
+    { "step": 1, "name": "final-report", "status": "pending" }
+  ]
+}

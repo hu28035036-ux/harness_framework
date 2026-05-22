@@ -1,0 +1,9 @@
+{
+  "project": "쩔로그",
+  "phase": "3-desktop-mvp",
+  "steps": [
+    { "step": 0, "name": "electron-shell", "status": "pending" },
+    { "step": 1, "name": "work-session-ui", "status": "pending" },
+    { "step": 2, "name": "verification-editor", "status": "pending" }
+  ]
+}

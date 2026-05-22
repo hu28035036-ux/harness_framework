@@ -1,0 +1,11 @@
+{
+  "phases": [
+    { "dir": "0-foundation", "status": "pending" },
+    { "dir": "1-domain-api", "status": "pending" },
+    { "dir": "2-web-mvp", "status": "pending" },
+    { "dir": "3-desktop-mvp", "status": "pending" },
+    { "dir": "4-recording-storage", "status": "pending" },
+    { "dir": "5-long-session-recovery", "status": "pending" },
+    { "dir": "6-hardening-report", "status": "pending" }
+  ]
+}

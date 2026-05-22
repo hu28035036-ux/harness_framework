@@ -1,0 +1,9 @@
+{
+  "project": "쩔로그",
+  "phase": "5-long-session-recovery",
+  "steps": [
+    { "step": 0, "name": "long-session-mode", "status": "pending" },
+    { "step": 1, "name": "manual-save-recovery", "status": "pending" },
+    { "step": 2, "name": "update-flow", "status": "pending" }
+  ]
+}
