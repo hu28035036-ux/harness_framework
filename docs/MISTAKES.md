@@ -82,3 +82,10 @@
   cause: A long-running Next.js dev server kept stale HMR/runtime state after repeated page rewrites.
   fix: Restarted the localhost verification server and reset the browser JavaScript kernel before rerunning Browser checks.
   prevention: After large App Router page rewrites, restart the dev server before Browser MCP verification if the page title falls back to the host or console shows webpack runtime errors.
+
+- date: 2026-05-23T08:23:45+09:00
+  step: 4-recording-storage/step0
+  symptom: Desktop recording backend test failed with `FrozenInstanceError` while patching `backend.detect`.
+  cause: `FFmpegRecordingBackend` is a frozen dataclass, so instance attributes and methods cannot be replaced by `patch.object`.
+  fix: Patched `shutil.which`, the external dependency used by `detect`, instead of patching the frozen instance method.
+  prevention: For frozen dataclass services, patch module-level collaborators or construct alternate instances rather than replacing instance attributes.

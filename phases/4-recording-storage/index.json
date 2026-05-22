@@ -1,9 +1,23 @@
 {
-  "project": "쩔로그",
+  "project": "zzallog",
   "phase": "4-recording-storage",
   "steps": [
-    { "step": 0, "name": "recorder-backend", "status": "pending" },
-    { "step": 1, "name": "capture-overlay", "status": "pending" },
-    { "step": 2, "name": "upload-queue", "status": "pending" }
+    {
+      "step": 0,
+      "name": "recorder-backend",
+      "status": "completed",
+      "completed_at": "2026-05-23T08:27:01+09:00",
+      "summary": "RecordingBackend protocol and FFmpeg backend with detection, 3-second test command, 30-second clip command, region/window targets, failure handling, desktop tests, and 5x AC verification."
+    },
+    {
+      "step": 1,
+      "name": "capture-overlay",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "upload-queue",
+      "status": "pending"
+    }
   ]
 }

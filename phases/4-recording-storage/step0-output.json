@@ -1,0 +1,54 @@
+{
+  "step": 0,
+  "name": "recorder-backend",
+  "status": "completed",
+  "recorded_at": "2026-05-23T08:27:01+09:00",
+  "completed_at": "2026-05-23T08:27:01+09:00",
+  "implemented": [
+    "Added RecordingBackend protocol and FFmpegRecordingBackend implementation.",
+    "Added FFmpeg detection via PATH lookup and clear FileNotFoundError handling when missing.",
+    "Added separate command builders for 3-second test recordings and 30-second clip recordings.",
+    "Added recording target support for game-window title capture and explicit region capture.",
+    "Added desktop tests for detection, command generation, region capture arguments, and missing FFmpeg failure handling."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "desktop_verification": {
+    "unit_tests": {
+      "command": "python -m unittest discover -s desktop/tests",
+      "tests": 16,
+      "status": "passed"
+    },
+    "ffmpeg": {
+      "installed_on_path": false,
+      "actual_recording_executed": false,
+      "reason": "ffmpeg executable is not available in PATH"
+    }
+  },
+  "mistakes_recorded": [
+    "Do not patch methods on frozen dataclass instances; patch module-level collaborators such as shutil.which."
+  ],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "aa94edf",
+    "pushed_at": "2026-05-23T08:27:01+09:00"
+  }
+}
