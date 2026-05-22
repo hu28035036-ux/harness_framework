@@ -1,9 +1,23 @@
 {
-  "project": "쩔로그",
+  "project": "zzallog",
   "phase": "3-desktop-mvp",
   "steps": [
-    { "step": 0, "name": "electron-shell", "status": "pending" },
-    { "step": 1, "name": "work-session-ui", "status": "pending" },
-    { "step": 2, "name": "verification-editor", "status": "pending" }
+    {
+      "step": 0,
+      "name": "pyside-shell",
+      "status": "completed",
+      "completed_at": "2026-05-23T08:12:17+09:00",
+      "summary": "Python desktop package with PySide6-capable entrypoint, update gate, worker approval login flow, no service-role config, unittest coverage, and 5x AC verification."
+    },
+    {
+      "step": 1,
+      "name": "work-session-ui",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "verification-editor",
+      "status": "pending"
+    }
   ]
 }

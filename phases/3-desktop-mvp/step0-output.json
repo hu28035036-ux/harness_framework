@@ -1,0 +1,55 @@
+{
+  "step": 0,
+  "name": "pyside-shell",
+  "status": "completed",
+  "recorded_at": "2026-05-23T08:12:17+09:00",
+  "completed_at": "2026-05-23T08:12:17+09:00",
+  "implemented": [
+    "Added a desktop Python package under desktop/zzallog with pure state models for update checks, login sessions, and worker approval status.",
+    "Added DesktopConfig validation that rejects Supabase service role keys in the PC program configuration.",
+    "Added a DesktopAuthFlow that blocks login when forced updates are required and blocks dashboard entry for non-approved workers.",
+    "Added a PySide6-capable entrypoint that renders a minimal login/update screen when PySide6 is installed and falls back to a CLI readiness check when it is not.",
+    "Added desktop unittest coverage and wired npm test to run both Vitest and desktop Python tests."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "desktop_verification": {
+    "python_version": "3.12.10",
+    "unit_tests": {
+      "command": "python -m unittest discover -s desktop/tests",
+      "tests": 4,
+      "status": "passed"
+    },
+    "demo_entrypoint": {
+      "command": "python -m desktop.zzallog.main",
+      "output": "ZzalLog desktop ready. login_enabled=True",
+      "status": "passed"
+    },
+    "pyside6_installed": false,
+    "status": "passed"
+  },
+  "mistakes_recorded": [],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "ca0220d",
+    "pushed_at": "2026-05-23T08:12:17+09:00"
+  }
+}

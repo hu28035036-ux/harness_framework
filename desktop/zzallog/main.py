@@ -1,0 +1,39 @@
+from .api_client import DemoDesktopApi
+from .app_state import DesktopConfig
+from .auth_flow import DesktopAuthFlow
+
+
+def create_flow() -> DesktopAuthFlow:
+    config = DesktopConfig(api_base_url="http://localhost:3000", app_version="0.1.0")
+    return DesktopAuthFlow(config=config, api=DemoDesktopApi())
+
+
+def main() -> int:
+    try:
+        from PySide6.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget
+    except ImportError:
+        flow = create_flow()
+        state = flow.initial_state()
+        print(f"ZzalLog desktop ready. login_enabled={state.login_enabled}")
+        return 0
+
+    app = QApplication([])
+    flow = create_flow()
+    state = flow.initial_state()
+
+    window = QWidget()
+    window.setWindowTitle("쩔로그 PC 도구")
+    layout = QVBoxLayout(window)
+    layout.addWidget(QLabel("쩔로그 기사 로그인"))
+    layout.addWidget(QLabel(state.blocking_reason or "업데이트 확인 완료. 로그인할 수 있습니다."))
+    login_button = QPushButton("로그인")
+    login_button.setEnabled(state.login_enabled)
+    layout.addWidget(login_button)
+    window.resize(420, 220)
+    window.show()
+    return app.exec()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+

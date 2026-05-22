@@ -1,0 +1,2 @@
+"""ZzalLog desktop MVP package."""
+
