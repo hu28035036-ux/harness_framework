@@ -2,7 +2,13 @@
   "project": "쩔로그",
   "phase": "0-foundation",
   "steps": [
-    { "step": 0, "name": "project-bootstrap", "status": "pending" },
+    {
+      "step": 0,
+      "name": "project-bootstrap",
+      "status": "completed",
+      "completed_at": "2026-05-23T00:08:35+0900",
+      "summary": "Next.js 15 기반 앱 셸, Tailwind/ESLint/Vitest/TypeScript 품질 기준, 공통 디렉터리와 foundation 테스트를 추가하고 AC 5회 검증을 통과했다."
+    },
     { "step": 1, "name": "quality-baseline", "status": "pending" }
   ]
 }

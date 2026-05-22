@@ -11,5 +11,6 @@ __pycache__/
 *.pyc
 *.log
 *.tmp
+*.tsbuildinfo
 sessions/
 local-storage/

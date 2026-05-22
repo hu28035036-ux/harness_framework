@@ -1,0 +1,57 @@
+{
+  "step": 0,
+  "name": "project-bootstrap",
+  "recorded_at": "2026-05-23T00:04:00+0900",
+  "implemented": [
+    "Next.js 15.5.18, React 19, TypeScript strict, Tailwind CSS 4, ESLint, Vitest 기반 package 구성을 추가했다.",
+    "src/app, src/components, src/domain, src/types와 추후 Electron/녹화/저장소용 src/desktop, src/recorder, src/storage, src/server 디렉터리를 만들었다.",
+    "쩔로그 실제 앱 셸 첫 화면을 구현했다: 상단 탭, 손님 모드/테마/로그인 컨트롤, 검색, 기사 카드 뼈대, PC 프로그램 상태 영역.",
+    "PRD 상단 탭과 설계서 상태값을 검증하는 Vitest 테스트를 추가했다."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "ok": true,
+    "runs": [
+      {
+        "run": 1,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 2,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 3,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 4,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 5,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      }
+    ],
+    "completed_at": "2026-05-23T00:08:35+0900"
+  },
+  "notes": [
+    "Next 15.5.6은 npm audit에서 critical 취약점이 보고되어 같은 Next 15 라인의 15.5.18로 패치했다.",
+    "npm audit에는 Next 내부 postcss 관련 moderate advisory가 남지만, audit 권고는 Next 9.3.3 다운그레이드라 MVP 스택/AC에는 반영하지 않았다."
+  ],
+  "browser_verification": {
+    "url": "http://127.0.0.1:3000",
+    "title": "쩔로그",
+    "heading_count": 1,
+    "search_input_count": 1,
+    "worker_list_link_count": 1,
+    "console_error_count": 0,
+    "screenshot": "브라우저 플러그인의 Page.captureScreenshot 명령이 시간 초과되어 캡처 이미지는 확보하지 못했다."
+  }
+}
