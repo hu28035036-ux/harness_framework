@@ -61,3 +61,10 @@
   원인: `next build`가 `next-env.d.ts`에 생성 타입 참조를 추가한 뒤, 이후 route 변경으로 `.next/types`가 stale 상태가 됨.
   수정: `typecheck` 스크립트를 `next typegen && tsc --noEmit`으로 변경해 AC 실행 전 route 타입을 재생성함.
   재발 방지: Next App Router route 파일을 추가/삭제하는 step에서는 typecheck 전에 `next typegen`을 실행한다.
+
+- 날짜: 2026-05-23T07:46:00+0900
+  step: 2-web-mvp/step0
+  증상: 모바일 폭 브라우저 검증에서 상단 주요 메뉴가 숨겨지지 않고 `display: block`으로 남음.
+  원인: 반응형 표시/숨김을 Tailwind 유틸 조합에만 맡겨 실제 브라우저 검증에서 기대 표시 상태를 안정적으로 보장하지 못함.
+  수정: `.desktop-main-nav`, `.mobile-bottom-nav` 전용 CSS와 1024px media query를 추가해 데스크톱/모바일 표시 상태를 명시함.
+  재발 방지: breakpoint에 따라 반드시 숨겨져야 하는 핵심 내비게이션은 Browser MCP의 실제 computed style로 확인한다.

@@ -1,9 +1,23 @@
 {
-  "project": "쩔로그",
+  "project": "zzallog",
   "phase": "2-web-mvp",
   "steps": [
-    { "step": 0, "name": "navigation-shell", "status": "pending" },
-    { "step": 1, "name": "marketplace-pages", "status": "pending" },
-    { "step": 2, "name": "trust-settings-pages", "status": "pending" }
+    {
+      "step": 0,
+      "name": "navigation-shell",
+      "status": "completed",
+      "completed_at": "2026-05-23T07:50:36+09:00",
+      "summary": "Responsive Next.js navigation shell with mode/theme controls, anchor sections, tests, browser checks, and 5x AC verification."
+    },
+    {
+      "step": 1,
+      "name": "marketplace-pages",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "trust-settings-pages",
+      "status": "pending"
+    }
   ]
 }

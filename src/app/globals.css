@@ -13,6 +13,19 @@
   --danger: #b91c1c;
 }
 
+[data-theme="light"] {
+  color-scheme: light;
+  --background: #f7f8fa;
+  --foreground: #15171a;
+  --surface: #ffffff;
+  --surface-muted: #edf0f3;
+  --border: #d8dee5;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --warning: #b45309;
+  --danger: #b91c1c;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
@@ -26,6 +39,19 @@
     --warning: #f59e0b;
     --danger: #f87171;
   }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #101214;
+  --foreground: #f3f5f7;
+  --surface: #181b1f;
+  --surface-muted: #23282e;
+  --border: #343a42;
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --warning: #f59e0b;
+  --danger: #f87171;
 }
 
 * {
@@ -49,9 +75,32 @@ a {
   text-decoration: none;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 button,
 input,
 select,
 textarea {
   font: inherit;
+}
+
+.desktop-main-nav {
+  display: none;
+}
+
+.mobile-bottom-nav {
+  display: grid;
+}
+
+@media (min-width: 1024px) {
+  .desktop-main-nav {
+    display: flex;
+  }
+
+  .mobile-bottom-nav {
+    display: none;
+  }
 }

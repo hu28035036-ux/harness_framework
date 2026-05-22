@@ -1,35 +1,11 @@
+import { AppShell } from "@/components/app-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { foundationStats, navigationTabs, workerCards } from "@/domain/foundation-data";
+import { foundationStats, workerCards } from "@/domain/foundation-data";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <header className="border-b border-[var(--border)] bg-[var(--surface)]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-[var(--accent)]">ZzalLog MVP</p>
-            <h1 className="text-2xl font-semibold">쩔로그</h1>
-          </div>
-          <nav aria-label="주요 메뉴" className="flex flex-wrap gap-2">
-            {navigationTabs.map((tab) => (
-              <a
-                className="rounded-md border border-[var(--border)] px-3 py-2 text-sm hover:bg-[var(--surface-muted)]"
-                href={tab.href}
-                key={tab.label}
-              >
-                {tab.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex flex-wrap items-center gap-2 text-sm">
-            <button className="rounded-md border border-[var(--border)] px-3 py-2">손님 모드</button>
-            <button className="rounded-md border border-[var(--border)] px-3 py-2">시스템 테마</button>
-            <button className="rounded-md bg-[var(--accent)] px-3 py-2 font-semibold text-white">로그인</button>
-          </div>
-        </div>
-      </header>
-
-      <div className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:grid-cols-[1.4fr_0.9fr]">
+    <AppShell>
+      <div id="main" className="mx-auto grid max-w-7xl gap-6 px-5 py-6 lg:grid-cols-[1.4fr_0.9fr]">
         <section className="space-y-6">
           <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
@@ -52,7 +28,7 @@ export default function Home() {
             </div>
           </div>
 
-          <section aria-labelledby="worker-list-title" className="space-y-3">
+          <section id="workers" aria-labelledby="worker-list-title" className="space-y-3">
             <h2 id="worker-list-title" className="text-lg font-semibold">
               기사 목록 뼈대
             </h2>
@@ -83,7 +59,7 @@ export default function Home() {
         </section>
 
         <aside className="space-y-4">
-          <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+          <section id="wanted" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
             <h2 className="font-semibold">작업 상태</h2>
             <div className="mt-4 grid gap-3">
               {foundationStats.map((stat) => (
@@ -94,7 +70,7 @@ export default function Home() {
               ))}
             </div>
           </section>
-          <section className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+          <section id="settings" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
             <h2 className="font-semibold">PC 프로그램 메뉴</h2>
             <ul className="mt-3 space-y-2 text-sm opacity-80">
               <li>대시보드와 업로드 대기 상태</li>
@@ -103,8 +79,16 @@ export default function Home() {
               <li>인증게시글 작성과 손님 확인 링크</li>
             </ul>
           </section>
+          <section id="scammer" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+            <h2 className="font-semibold">주의 정보</h2>
+            <p className="mt-3 text-sm leading-6 opacity-80">사기꾼 목록은 개인정보 없이 기사명, 캐릭터명, 유형, 상태만 공개합니다.</p>
+          </section>
+          <section id="feedback" className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4">
+            <h2 className="font-semibold">오류 및 건의사항</h2>
+            <p className="mt-3 text-sm leading-6 opacity-80">오류 제보와 기능 건의 처리 상태를 확인하는 영역입니다.</p>
+          </section>
         </aside>
       </div>
-    </main>
+    </AppShell>
   );
 }

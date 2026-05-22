@@ -1,0 +1,66 @@
+{
+  "step": 0,
+  "name": "navigation-shell",
+  "status": "completed",
+  "recorded_at": "2026-05-23T00:53:00+09:00",
+  "completed_at": "2026-05-23T07:50:36+09:00",
+  "implemented": [
+    "Added a responsive AppShell with desktop top navigation, mobile bottom navigation, login/profile action area, and page anchor links.",
+    "Added customer/worker mode and light/dark theme controls as client components.",
+    "Reworked the MVP home page into real dashboard sections under the shared shell.",
+    "Added navigation shell tests, Testing Library setup, and foundation data coverage for both full and short labels.",
+    "Added explicit responsive CSS guards so desktop navigation is hidden on mobile and mobile navigation is hidden on desktop."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "commands": [
+      "npm.cmd run lint",
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build"
+    ],
+    "runs": [
+      { "run": 1, "status": "passed" },
+      { "run": 2, "status": "passed" },
+      { "run": 3, "status": "passed" },
+      { "run": 4, "status": "passed" },
+      { "run": 5, "status": "passed" }
+    ],
+    "status": "passed"
+  },
+  "browser_verification": {
+    "desktop": {
+      "url": "http://127.0.0.1:3000",
+      "title": "쩔로그",
+      "mainNavCount": 1,
+      "mobileNavCount": 1,
+      "customerButtonCount": 1,
+      "workerButtonCount": 1,
+      "themeSelectCount": 1,
+      "loginLinkCount": 1,
+      "articleListLinkCount": 1,
+      "consoleErrorCount": 0,
+      "status": "passed"
+    },
+    "mobile": {
+      "viewportWidth": 390,
+      "mainNavDisplay": "none",
+      "mobileNavDisplay": "grid",
+      "mobileLinks": ["메인", "기사", "구함", "주의", "건의", "설정"],
+      "consoleErrorCount": 0,
+      "status": "passed"
+    }
+  },
+  "mistakes_recorded": [
+    "Avoid running Next.js type generation and build/typecheck concurrently because .next/types can race.",
+    "After responsive navigation changes, verify computed mobile display values instead of relying only on unit tests."
+  ],
+  "push": {
+    "status": "pushed",
+    "remote": "origin",
+    "branch": "feat-zzallog-harness",
+    "commit": "9f2e93a",
+    "pushed_at": "2026-05-23T07:50:36+09:00"
+  }
+}

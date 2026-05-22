@@ -19,6 +19,7 @@ describe("foundation shell", () => {
       "오류 및 건의사항",
       "설정",
     ]);
+    expect(navigationTabs.map((tab) => tab.shortLabel)).toEqual(["메인", "기사", "구함", "주의", "건의", "설정"]);
   });
 
   it("exposes the design-spec status unions", () => {

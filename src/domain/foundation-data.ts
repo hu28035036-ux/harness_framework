@@ -1,10 +1,10 @@
 export const navigationTabs = [
-  { label: "메인페이지", href: "#main" },
-  { label: "기사목록", href: "#workers" },
-  { label: "기사구함", href: "#wanted" },
-  { label: "사기꾼", href: "#scammer" },
-  { label: "오류 및 건의사항", href: "#feedback" },
-  { label: "설정", href: "#settings" },
+  { label: "메인페이지", shortLabel: "메인", href: "#main" },
+  { label: "기사목록", shortLabel: "기사", href: "#workers" },
+  { label: "기사구함", shortLabel: "구함", href: "#wanted" },
+  { label: "사기꾼", shortLabel: "주의", href: "#scammer" },
+  { label: "오류 및 건의사항", shortLabel: "건의", href: "#feedback" },
+  { label: "설정", shortLabel: "설정", href: "#settings" },
 ] as const;
 
 export const foundationStats = [
