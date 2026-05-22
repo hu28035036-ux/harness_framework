@@ -1,0 +1,44 @@
+{
+  "step": 1,
+  "name": "quality-baseline",
+  "recorded_at": "2026-05-23T00:10:00+0900",
+  "implemented": [
+    "세션, 인증게시글, 파일 상태값을 const 배열과 union type으로 함께 고정했다.",
+    "공통 테스트 유틸 `src/test/test-utils.ts`를 추가했다.",
+    "필수 아키텍처 디렉터리와 계획/툴링 파일 존재를 검증하는 구조 테스트를 추가했다.",
+    "설계서 상태값과 런타임 상수가 일치하는지 검증하는 테스트를 보강했다."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "ok": true,
+    "runs": [
+      {
+        "run": 1,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 2,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 3,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 4,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 5,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      }
+    ],
+    "completed_at": "2026-05-23T00:16:20+0900"
+  }
+}
