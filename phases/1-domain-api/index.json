@@ -16,6 +16,13 @@
       "completed_at": "2026-05-23T00:29:35+0900",
       "summary": "설계서 API 초안의 Next.js 라우트, MVP 세션 추상화, 서버 서비스 계약과 성공/권한/검증 실패 테스트를 추가하고 AC 5회 검증을 통과했다."
     },
-    { "step": 2, "name": "policy-enforcement", "status": "pending" }
-  ]
+    {
+      "step": 2,
+      "name": "policy-enforcement",
+      "status": "completed",
+      "completed_at": "2026-05-23T00:35:10+0900",
+      "summary": "기사 권한 댓글, 홍보글 10분 제한, 게시 전 인증자료 검증, 평점 토큰 1회 제출, 금지 문구 정책을 서버 함수와 테스트로 추가하고 AC 5회 검증을 통과했다."
+    }
+  ],
+  "completed_at": "2026-05-23T00:35:10+0900"
 }

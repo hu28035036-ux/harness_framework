@@ -5,7 +5,11 @@
       "status": "completed",
       "completed_at": "2026-05-23T00:16:20+0900"
     },
-    { "dir": "1-domain-api", "status": "pending" },
+    {
+      "dir": "1-domain-api",
+      "status": "completed",
+      "completed_at": "2026-05-23T00:35:10+0900"
+    },
     { "dir": "2-web-mvp", "status": "pending" },
     { "dir": "3-desktop-mvp", "status": "pending" },
     { "dir": "4-recording-storage", "status": "pending" },

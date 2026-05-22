@@ -1,0 +1,45 @@
+{
+  "step": 2,
+  "name": "policy-enforcement",
+  "recorded_at": "2026-05-23T00:34:00+0900",
+  "implemented": [
+    "기사구함 댓글의 worker-only 서버 검증 테스트를 추가했다.",
+    "작업홍보게시글 10분 제한 정책과 남은 시간 계산을 추가했다.",
+    "인증게시글 게시 전 손님 닉네임, 사냥터, 시작/종료 클립, 인증캡처, 업로드 실패 상태 검증을 추가했다.",
+    "평점 토큰 1회 제출 정책을 추가했다.",
+    "현금거래, 계좌, 외부 결제, 자동사냥, 매크로, 클라이언트 변조 금지 문구 검증을 서버 정책 함수로 추가했다."
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "ok": true,
+    "runs": [
+      {
+        "run": 1,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 2,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 3,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 4,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 5,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      }
+    ],
+    "completed_at": "2026-05-23T00:35:10+0900"
+  }
+}

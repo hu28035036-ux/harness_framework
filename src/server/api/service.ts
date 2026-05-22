@@ -1,6 +1,9 @@
 import { hasRole } from "@/server/auth/session";
 import { toPublicWorkerProfile } from "@/domain/public-profile";
 import type { WorkerProfileRecord } from "@/types/profile";
+import { assertAllowedContent } from "@/server/policy/content-policy";
+import { checkPromoCooldown } from "@/server/policy/promo-policy";
+import { canSubmitRating, validatePublishReady, type PublishAsset } from "@/server/policy/verification-policy";
 import type { ApiContext, ApiResult } from "./types";
 import { fail, ok, requireFields } from "./result";
 
@@ -51,6 +54,13 @@ export const apiService = {
     if (!hasRole(context.session, "worker")) return fail("FORBIDDEN", "Worker role is required.", 403);
     const invalid = requireFields(input, ["title", "huntingArea", "content"]);
     if (invalid) return invalid;
+    const contentPolicy = assertAllowedContent(`${input.title ?? ""} ${input.content ?? ""} ${input.huntingArea ?? ""}`);
+    if (!contentPolicy.ok) return fail(contentPolicy.code, contentPolicy.message, 422);
+    const lastPromoCreatedAt = typeof input.lastPromoCreatedAt === "string" ? new Date(input.lastPromoCreatedAt) : null;
+    const cooldown = checkPromoCooldown(new Date(), lastPromoCreatedAt);
+    if (!cooldown.ok) {
+      return fail("PROMO_COOLDOWN", `작업홍보게시글은 10분에 1번 작성 가능합니다.`, 429);
+    }
     return ok({ id: "promo_new", status: "published" }, 201);
   },
 
@@ -62,6 +72,8 @@ export const apiService = {
     if (!context.session) return fail("UNAUTHORIZED", "Login is required.", 401);
     const invalid = requireFields(input, ["title", "huntingArea", "desiredDuration", "authMethod", "contactMethod"]);
     if (invalid) return invalid;
+    const contentPolicy = assertAllowedContent(Object.values(input).join(" "));
+    if (!contentPolicy.ok) return fail(contentPolicy.code, contentPolicy.message, 422);
     return ok({ id: "wanted_new", status: "open" }, 201);
   },
 
@@ -69,6 +81,8 @@ export const apiService = {
     if (!hasRole(context.session, "worker")) return fail("FORBIDDEN", "Worker role is required.", 403);
     const invalid = requireFields(input, ["content", "availableTime", "authMethod"]);
     if (invalid) return invalid;
+    const contentPolicy = assertAllowedContent(Object.values(input).join(" "));
+    if (!contentPolicy.ok) return fail(contentPolicy.code, contentPolicy.message, 422);
     return ok({ id: "comment_new", wantedPostId, status: "published" }, 201);
   },
 
@@ -104,14 +118,28 @@ export const apiService = {
     return ok({ id: "clip_new", sessionId, status: "uploaded" }, 201);
   },
 
-  publishVerificationPost(context: ApiContext, postId: string) {
+  publishVerificationPost(context: ApiContext, postId: string, input: Record<string, unknown> = {}) {
     if (!hasRole(context.session, "worker")) return fail("FORBIDDEN", "Worker role is required.", 403);
+    const publishCheck = validatePublishReady({
+      customerNickname: typeof input.customerNickname === "string" ? input.customerNickname : "mvp-customer",
+      huntingArea: typeof input.huntingArea === "string" ? input.huntingArea : "mvp-area",
+      assets: Array.isArray(input.assets)
+        ? (input.assets as PublishAsset[])
+        : [
+            { kind: "capture", status: "uploaded" },
+            { kind: "clip", clipType: "start", status: "uploaded" },
+            { kind: "clip", clipType: "end", status: "uploaded" },
+          ],
+    });
+    if (!publishCheck.ok) return fail("PUBLISH_NOT_READY", publishCheck.errors.join(" "), 422);
     return ok({ id: postId, status: "published", customerLinkToken: "customer_token_demo" });
   },
 
   submitRating(token: string, input: Record<string, unknown>) {
     const invalid = requireFields(input, ["score"]);
     if (invalid) return invalid;
+    const submittedTokens = Array.isArray(input.submittedTokens) ? input.submittedTokens.map(String) : [];
+    if (!canSubmitRating(token, submittedTokens)) return fail("RATING_ALREADY_SUBMITTED", "이미 평점을 제출한 링크입니다.", 409);
     return ok({ token, score: input.score, accepted: true }, 201);
   },
 

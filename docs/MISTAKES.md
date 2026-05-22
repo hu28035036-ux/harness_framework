@@ -54,3 +54,10 @@
   원인: 동적 정규식 문자열에서 중괄호와 공백 패턴을 과하게 이스케이프함.
   수정: `new RegExp` 패턴을 `enum Name \\{([\\s\\S]*?)\\}` 형태로 수정함.
   재발 방지: 문자열 기반 schema 파서는 작은 실패 테스트로 먼저 확인한다.
+
+- 날짜: 2026-05-23T00:32:00+0900
+  step: 1-domain-api/step2
+  증상: `npm run typecheck`가 `.next/types/... not found` 오류로 실패함.
+  원인: `next build`가 `next-env.d.ts`에 생성 타입 참조를 추가한 뒤, 이후 route 변경으로 `.next/types`가 stale 상태가 됨.
+  수정: `typecheck` 스크립트를 `next typegen && tsc --noEmit`으로 변경해 AC 실행 전 route 타입을 재생성함.
+  재발 방지: Next App Router route 파일을 추가/삭제하는 step에서는 typecheck 전에 `next typegen`을 실행한다.
