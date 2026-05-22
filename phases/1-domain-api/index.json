@@ -9,7 +9,13 @@
       "completed_at": "2026-05-23T00:23:05+0900",
       "summary": "Prisma schema 핵심 모델, 상태 enum/TypeScript 타입 동기화, 공개 기사 프로필 DTO 개인정보 비노출 매핑과 테스트를 추가하고 AC 5회 검증을 통과했다."
     },
-    { "step": 1, "name": "api-contracts", "status": "pending" },
+    {
+      "step": 1,
+      "name": "api-contracts",
+      "status": "completed",
+      "completed_at": "2026-05-23T00:29:35+0900",
+      "summary": "설계서 API 초안의 Next.js 라우트, MVP 세션 추상화, 서버 서비스 계약과 성공/권한/검증 실패 테스트를 추가하고 AC 5회 검증을 통과했다."
+    },
     { "step": 2, "name": "policy-enforcement", "status": "pending" }
   ]
 }

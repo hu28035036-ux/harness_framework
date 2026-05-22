@@ -1,0 +1,61 @@
+{
+  "step": 1,
+  "name": "api-contracts",
+  "recorded_at": "2026-05-23T00:28:00+0900",
+  "implemented": [
+    "MVP용 헤더 기반 세션 추상화와 ApiResult 응답 헬퍼를 추가했다.",
+    "설계서 API 초안을 Next.js app/api 라우트 핸들러로 추가했다.",
+    "DB 접근 전 단계의 서버 서비스 계약을 `src/server/api/service.ts`에 분리했다.",
+    "성공, 권한 없음, 검증 실패, 공개 프로필 개인정보 비노출 API 테스트를 추가했다."
+  ],
+  "api_routes": [
+    "POST /api/auth/register",
+    "POST /api/auth/login",
+    "GET/PUT /api/worker-profile/me",
+    "POST /api/promo-posts",
+    "GET/POST /api/wanted-posts",
+    "POST /api/wanted-posts/{id}/comments",
+    "POST /api/sessions/start",
+    "POST /api/sessions/{id}/pause|hold|resume|complete",
+    "POST /api/sessions/{id}/captures",
+    "POST /api/sessions/{id}/clips",
+    "POST /api/verification-posts/{id}/publish",
+    "POST /api/verification-posts/{token}/rating",
+    "GET/POST /api/scammer-reports",
+    "GET /api/scammer-entries",
+    "GET /api/app-version"
+  ],
+  "verification_started": true,
+  "validation": {
+    "required_consecutive_passes": 5,
+    "ok": true,
+    "runs": [
+      {
+        "run": 1,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 2,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 3,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 4,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      },
+      {
+        "run": 5,
+        "commands": ["npm.cmd run lint", "npm.cmd run typecheck", "npm.cmd test", "npm.cmd run build"],
+        "ok": true
+      }
+    ],
+    "completed_at": "2026-05-23T00:29:35+0900"
+  }
+}
